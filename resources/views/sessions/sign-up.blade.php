@@ -2,21 +2,23 @@
     <x-slot name="content">
         <div class="flex flex-col md:flex-row h-screen">
             <div class="md:w-2/3 h-screen flex justify-center items-center">
-                <form class="w-full max-w-md px-4 flex flex-col md:gap-0 gap-4">
+                <form method="POST" action="/register" class="w-full max-w-md px-4 flex flex-col md:gap-0 gap-4">
+                    @csrf
+
                     <div class="flex justify-between">
                         <img src="images/Group 1.jpg" class="w-[150px] mb-3" />
                         <div class="text-black flex items-center cursor-pointer">English <img src="images/down-small.jpg"
                                 class="w-[25px]" /></div>
-
                     </div>
                     <div class="mb-8">
                         <h1 class="text-xl text-[#010414] font-black">Welcome to Coronatime</h1>
                         <p class="text-[#808189] text-md">Please enter required info to sign up</p>
                     </div>
-                    <x-Input-field name="username" label="Username" placeholder="Enter unique username" />
-                    <x-Input-field name="email" label="Email" placeholder="Enter your email" />
-                    <x-Input-field name="password" label="Password" placeholder="Fill in password" />
-                    <x-Input-field name="confirm_password" label="Repeat password" placeholder="Repeat password" />
+                    <x-Input-field type="text" name="name" label="Username" placeholder="Enter unique username" />
+                    <x-Input-field type="text" name="email" label="Email" placeholder="Enter your email" />
+                    <x-Input-field type="password" name="password" label="Password" placeholder="Fill in password" />
+                    <x-Input-field type="password" name="password_confirmation" label="Repeat password"
+                        placeholder="Repeat password" />
                     <div class="mt-3">
                         <input type="checkbox" />
                         Remember this device
@@ -24,7 +26,7 @@
                     <div class="mt-4">
                         <button
                             class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full h-12 bg-[#0FBA68]"
-                            type="button">
+                            type="submit">
                             Sign up
                         </button>
                     </div>
