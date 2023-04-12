@@ -3,5 +3,6 @@
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::view('register', 'sessions.sign-up')->middleware('guest');
+
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
