@@ -1,0 +1,14 @@
+{
+    "title": "Welcome to Coronatime",
+    "info": "Please enter required info to sign up",
+    "conf_password": "Repeat password",
+    "remember": "Remember this device",
+    "already_have": "Don’t have and account?",
+    "user_name": "Username",
+    "login": "Log In",
+    "sign_up": "Sign up",
+    "for_user": "Enter unique username",
+    "for_email": "Enter your email",
+    "for_password": "Fill in password",
+    "for_conf_password": "Repeat password"
+}
