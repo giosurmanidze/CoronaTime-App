@@ -33,6 +33,15 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->password = bcrypt($user->password);
+        });
+    }
+
     /**
      * The attributes that should be cast.
      *
