@@ -40,7 +40,6 @@
                 text-align: center;
             }
 
-
             td[class="desk-button"] {
                 width: 300px;
                 height: 50px;
@@ -77,15 +76,14 @@
                 border: 0 !important;
                 font-size: 16px !important;
             }
-
         }
     </style>
 </head>
 
-<body style="margin: 0; padding: 0;">
+<body>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
-            <td bgcolor="#ffffff" align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
+            <td bgcolor="#ffffff" align="center" style="padding: 70px 15px 70px 15px;">
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="500"
                     class="responsive-table">
                     <td>
@@ -104,8 +102,9 @@
                                                                 <img src="https://i.postimg.cc/fLfNcTq0/Landing-Worldwide-2.png"
                                                                     width="500" height="200" border="0"
                                                                     alt="Can an email really be responsive?"
-                                                                    style="display: block; padding: 0; color: #666666; text-decoration: none; font-family: Helvetica, arial, sans-serif; font-size: 16px; width: 500px; height: 300px;"
+                                                                    style="display: block; width: 100%; height: auto;"
                                                                     class="img-max">
+                                                            </td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -115,39 +114,31 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    <table role="presentation" width="100%" border="0" cellspacing="0"
-                                        cellpadding="0">
-                                        <tr>
-                                            <td align="center"
-                                                style="font-size: 25px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;"
-                                                class="padding-copy"><strong>Confirmation email</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td align="center"
-                                                style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;"
-                                                class="padding-copy">click this button to verify your email</td>
-                                        </tr>
-                                    </table>
+                                <td align="center"
+                                    style="font-size: 25px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;"
+                                    class="padding-copy">
+                                    <strong>Confirmation email
+                                    </strong>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    <table role="presentation" width="100%" border="0" cellspacing="0"
-                                        cellpadding="0" class="mobile-button-container">
+                                <td align="center"
+                                    style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;"
+                                    class="padding-copy">
+                                    click this button to verify your email
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="padding: 25px 0 0 0;" class="padding-copy">
+                                    <table role="presentation" border="0" cellspacing="0" cellpadding="0"
+                                        class="responsive-table">
                                         <tr>
-                                            <td align="center" style="padding: 25px 0 0 0;" class="padding-copy">
-                                                <table role="presentation" border="0" cellspacing="0"
-                                                    cellpadding="0" class="responsive-table">
-                                                    <tr>
-                                                        <td align="center"><a href="{{ $confirmationLink }}"
-                                                                target="_blank"
-                                                                style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: white; text-decoration: none; background-color: #0FBA68; border-top: 15px solid #0FBA68; border-bottom: 15px solid #0FBA68; border-left: 120px solid #0FBA68; border-right: 120px solid #0FBA68; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; display: inline-block;"
-                                                                class="mobile-button""
-                                                                class="mobile-button desk-button">VERIFY EMAIL</a>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                            <td align="center">
+                                                <a href="{{ $confirmationLink }}" target="_blank"
+                                                    style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: white; text-decoration: none; background-color: #0FBA68; border-top: 15px solid #0FBA68; border-bottom: 15px solid #0FBA68; border-left: 120px solid #0FBA68; border-right: 120px solid #0FBA68; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; display: inline-block;"
+                                                    class="mobile-button desk-button">
+                                                    VERIFY EMAIL
+                                                </a>
                                             </td>
                                         </tr>
                                     </table>
@@ -155,10 +146,9 @@
                             </tr>
                         </table>
                     </td>
+                </table>
+            </td>
         </tr>
-    </table>
-    </td>
-    </table>
     </table>
 </body>
 
