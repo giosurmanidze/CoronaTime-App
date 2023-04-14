@@ -20,7 +20,7 @@ class StoreRegisterRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'email.required' => 'Email is required!',
