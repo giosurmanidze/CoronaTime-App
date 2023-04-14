@@ -16,12 +16,12 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validated();
 
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => $validatedData['password'],
-            'confirmation_status' => false,
-        ]);
+
+        $user = User::create(array_merge($validatedData, [
+            'password' => bcrypt($validatedData['password']),
+            'email_verified_at' => false,
+        ]));
+
 
         $this->sendConfirmationEmail($user);
 
@@ -31,8 +31,8 @@ class RegisterController extends Controller
 
     public function confirmEmail(User $user): View
     {
-        if (!$user->confirmation_status) {
-            $user->confirmation_status = true;
+        if (!$user->email_verified_at) {
+            $user->email_verified_at = true;
             $user->save();
         }
 
