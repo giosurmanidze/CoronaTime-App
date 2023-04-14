@@ -24,14 +24,14 @@
                         Remember this device
                     </div>
                     <div class="mt-4">
-                        <button
+                        <button name="register"
                             class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full h-12 bg-[#0FBA68]"
                             type="submit">
                             Sign up
                         </button>
                     </div>
                     <div class="text-center mt-2">
-                        Don’t have and account? <span class="text-black">Log in</span>
+                        Don’t have and account? <strong><a href="/login" class="text-black">Log in</a></strong>
                     </div>
                 </form>
             </div>
@@ -39,6 +39,5 @@
                 style="background-image: url('images/Rectangle 1.jpg');">
             </div>
         </div>
-
     </x-slot>
 </x-layout>

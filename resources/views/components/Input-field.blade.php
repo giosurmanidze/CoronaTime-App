@@ -5,5 +5,8 @@
         {{ $label }}
     </label>
     <input class="appearance-none border h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        id="{{ $name }}" type="{{ $type }}" placeholder="{{ $placeholder }}">
+        id="{{ $name }}" type="{{ $type }}" name="{{ $name }}" placeholder="{{ $placeholder }}" value="{{ old($name) }}"> 
+    @error($name)
+        <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+    @enderror
 </div>
