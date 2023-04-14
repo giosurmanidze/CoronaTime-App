@@ -20,7 +20,7 @@
                     <x-Input-field type="password" name="password_confirmation" label="Repeat password"
                         placeholder="Repeat password" />
                     <div class="mt-3">
-                        <input type="checkbox" />
+                        <input class="form-check-input" type="checkbox" name="remember_device" id="remember_device" {{ old('remember_device') ? 'checked' : '' }}>
                         Remember this device
                     </div>
                     <div class="mt-4">

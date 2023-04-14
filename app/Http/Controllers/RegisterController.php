@@ -16,17 +16,13 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validated();
 
-
-        $user = User::create(array_merge($validatedData, [
-            'password' => bcrypt($validatedData['password']),
-            'email_verified_at' => false,
-        ]));
-
+        $user = User::create($validatedData);
 
         $this->sendConfirmationEmail($user);
 
         return redirect('/confirmation-status');
     }
+
 
 
     public function confirmEmail(User $user): View
