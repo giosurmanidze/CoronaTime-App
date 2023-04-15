@@ -17,6 +17,10 @@
     "conf_btn": "click this button to verify your email",
     "verify_btn": "VERIFY EMAIL",
     "conf_message": "We have sent you a confirmation email",
-    "password": "password"
-
+    "password": "password",
+    "title_login": "Welcome back",
+    "info_login": "Welcome back! Please enter your details",
+    "dont_have": "Don’t have and account?",
+    "login_sign_up": "Sign up for free",
+    "forgot_password": "Forgot password?"
 }
