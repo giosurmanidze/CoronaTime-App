@@ -10,5 +10,13 @@
     "for_user": "Enter unique username",
     "for_email": "Enter your email",
     "for_password": "Fill in password",
-    "for_conf_password": "Repeat password"
+    "for_conf_password": "Repeat password",
+    "account_status": "Your account is confirmed, you can sign in",
+    "sign_in": "SIGN IN",
+    "confirmation_email": "Confirmation email",
+    "conf_btn": "click this button to verify your email",
+    "verify_btn": "VERIFY EMAIL",
+    "conf_message": "We have sent you a confirmation email",
+    "password": "password"
+
 }

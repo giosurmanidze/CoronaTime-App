@@ -15,11 +15,12 @@ class RegisterController extends Controller
     public function register(StoreRegisterRequest $request): RedirectResponse
     {
         $validatedData = $request->validated();
-
+        unset($validatedData['password_confirmation']);
+        
         $user = User::create($validatedData);
-
-        $this->sendConfirmationEmail($user);
-
+        
+        $this->sendConfirmationEmail($user); 
+    
         return redirect('/confirmation-status');
     }
 
