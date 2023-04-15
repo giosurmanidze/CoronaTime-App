@@ -21,54 +21,14 @@
                         <h1 class="text-xl text-[#010414] font-black">{{ __('title') }}</h1>
                         <p class="text-[#808189] text-md">{{ __('info') }}</p>
                     </div>
-                    <x-Input-field type="text" name="name" error_name="name" label="user_name" placeholder="for_user" />
-                    <x-Input-field type="text" name="email" error_name="email" label="Email" placeholder="for_email" />
-                    {{-- <x-Input-field type="password" name="password"  label="Password" placeholder="for_password" />
-                    <x-Input-field type="password" name="password_confirmation" label="conf_password"
-                        placeholder="for_conf_password" /> --}}
-
-                        <div class="2xl:mt-3 relative">
-                            <label class="block text-[#010414] font-bold mb-2" for="password">
-                                {{ __("Password") }}
-                            </label>
-                            <input
-                                class="appearance-none border h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old("password")) && !$errors->has("password")) border-green-500 @else border-red-500 @endif"
-                                id="password" type="password" name="password" placeholder="{{ __("for_password") }}"
-                                value="{{ old("password") }}">
-                            @if (!empty(old("password")) && !$errors->has("password"))
-                                <img class="absolute right-1 top-12" src="images/checkbox-circle-fill.jpg" />
-                            @else
-                                @if ($errors->has("password"))
-                                     <div class="flex items-center">
-                                        <img src="images/error-warning-fill.jpg" width="20" class="mt-3" />
-                                        <p class="text-red-500 text-xs italic mt-2 ml-2">{{  $errors->first("password") }}</p>
-                                    </div> 
-                                
-                                @endif
-                            @endif
-                        </div>
-                        <div class="2xl:mt-3 relative">
-                            <label class="block text-[#010414] font-bold mb-2" for="password_confirmation">
-                                {{ __("conf_password") }}
-                            </label>
-                            <input
-                                class="appearance-none border h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old("password_confirmation")) && !$errors->has("password_confirmation")) border-green-500 @else border-red-500 @endif"
-                                id="password_confirmation" type="password_confirmation" name="password_confirmation" placeholder="{{ __("for_conf_password") }}"
-                                value="{{ old("password_confirmation") }}">
-                            @if (!empty(old("password_confirmation")) && !$errors->has("password_confirmation"))
-                                <img class="absolute right-1 top-12" src="images/checkbox-circle-fill.jpg" />
-                            @else
-                                @if ($errors->has("password_confirmation"))
-                                    <div class="flex items-center">
-                                        <img src="images/error-warning-fill.jpg" width="20" class="mt-3" />
-                                        <p class="text-red-500 text-xs italic mt-2 ml-2">{{ $errors->first("password_confirmation") }}</p>
-                                    </div>
-                                @endif
-                            @endif
-                        </div>
-                        
-
-
+                    <x-Input-field type="text" name="name" label="user_name" placeholder="for_user"
+                        :errors="$errors" />
+                    <x-Input-field type="text" name="email" label="Email"
+                        placeholder="for_email" :errors="$errors" />
+                    <x-Input-field type="password" name="password"  label="Password"
+                        placeholder="for_password" :errors="$errors" />
+                    <x-Input-field type="password" name="password_confirmation"  label="Repeat Password"
+                        placeholder="for_conf_password" :errors="$errors" />
                     <div class="mt-3">
                         <input class="form-check-input" type="checkbox" name="remember_device" id="remember_device">
                         {{ __('remember') }}

@@ -16,11 +16,11 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validated();
         unset($validatedData['password_confirmation']);
-        
+
         $user = User::create($validatedData);
-        
-        $this->sendConfirmationEmail($user); 
-    
+
+        $this->sendConfirmationEmail($user);
+
         return redirect('/confirmation-status');
     }
 
