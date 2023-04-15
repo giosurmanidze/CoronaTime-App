@@ -1,8 +1,8 @@
 <x-layout>
     <x-slot name="content">
         <div class="flex flex-col md:flex-row h-screen">
-            <div class="md:w-2/3 h-screen flex justify-center items-center">
-                <form method="POST" action="/register" class="w-full max-w-md px-4 flex flex-col md:gap-0 gap-4">
+            <div class="md:w-2/3 h-screen flex justify-center md:justify-start lg:ml-10  items-center w-full">
+                <form method="POST" action="/register" class="w-full max-w-md px-4 md:ml-10 flex flex-col md:gap-2 gap-4 ">
                     @csrf
 
                     <div class="flex justify-between">
@@ -23,11 +23,11 @@
                     </div>
                     <x-Input-field type="text" name="name" label="user_name" placeholder="for_user"
                         :errors="$errors" />
-                    <x-Input-field type="text" name="email" label="Email"
-                        placeholder="for_email" :errors="$errors" />
-                    <x-Input-field type="password" name="password"  label="Password"
-                        placeholder="for_password" :errors="$errors" />
-                    <x-Input-field type="password" name="password_confirmation"  label="Repeat Password"
+                    <x-Input-field type="text" name="email" label="Email" placeholder="for_email"
+                        :errors="$errors" />
+                    <x-Input-field type="password" name="password" label="Password" placeholder="for_password"
+                        :errors="$errors" />
+                    <x-Input-field type="password" name="password_confirmation" label="Repeat Password"
                         placeholder="for_conf_password" :errors="$errors" />
                     <div class="mt-3">
                         <input class="form-check-input" type="checkbox" name="remember_device" id="remember_device">
