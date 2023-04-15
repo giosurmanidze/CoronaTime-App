@@ -50,4 +50,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function getTranslation($field, $locale = null)
+    {
+        $locale = $locale ?: app()->getLocale();
+        $attribute = "{$field}_{$locale}";
+
+        return $this->{$attribute};
+    }
 }

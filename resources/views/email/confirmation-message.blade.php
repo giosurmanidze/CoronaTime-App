@@ -4,7 +4,7 @@
             <img src="images/Group 1.jpg" class="absolute top-4 w-30" />
             <div class="flex flex-col items-center justify-center gap-2">
                 <img src="images/icons8-checkmark.gif" />
-                <p>We have sent you a confirmation email</p>
+                <p>{{ __("conf_message") }}</p>
             </div>
         </div>
     </x-slot>

@@ -15,6 +15,7 @@ class RegisterController extends Controller
     public function register(StoreRegisterRequest $request): RedirectResponse
     {
         $validatedData = $request->validated();
+        unset($validatedData['password_confirmation']);
 
         $user = User::create($validatedData);
 
@@ -28,7 +29,7 @@ class RegisterController extends Controller
     public function confirmEmail(User $user): View
     {
         if (!$user->email_verified_at) {
-            $user->email_verified_at = true;
+            $user->email_verified_at = now();
             $user->save();
         }
 

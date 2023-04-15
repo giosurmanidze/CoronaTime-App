@@ -15,17 +15,23 @@ class StoreRegisterRequest extends FormRequest
     {
         return [
             "name" => "required|min:3|unique:users,name",
-            "email" => "required|unique:users,email",
-            'password' => "required|min:3|confirmed",
+            "email" => "required|email|unique:users,email",
+            'password' => 'required|min:3|confirmed',
+            'password_confirmation' => 'required|same:password',
         ];
     }
 
-    public function messages(): array
+    public function messages()
     {
         return [
-            'email.required' => 'Email is required!',
-            'name.required' => "Name is required!",
-            'password.required' => "Password is required!",
+            'email.required' => __('validation.required'),
+            'email.unique' => __('validation.unique', ['attribute' => __('email')]),
+            'name.required' => __('validation.required'),
+            'name.min' => __('validation.min', ['attribute' => __('name')]),
+            'name.unique' => __('validation.unique', ['attribute' => __('name')]),
+            'password.min' => __('validation.min', ['attribute' => __('password')]),
+            'password_confirmation.required' => __('validation.required'),
+            'password_confirmation.same' => __('validation.same', ['attribute' => __('same')]),
         ];
     }
 }
