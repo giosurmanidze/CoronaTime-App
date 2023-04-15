@@ -117,7 +117,7 @@
                                 <td align="center"
                                     style="font-size: 25px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;"
                                     class="padding-copy">
-                                    <strong>Confirmation email
+                                    <strong>{{  __("confirmation_email")}}
                                     </strong>
                                 </td>
                             </tr>
@@ -125,7 +125,7 @@
                                 <td align="center"
                                     style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;"
                                     class="padding-copy">
-                                    click this button to verify your email
+                                   {{ __("conf_btn") }}
                                 </td>
                             </tr>
                             <tr>
@@ -137,7 +137,7 @@
                                                 <a href="{{ $confirmationLink }}" target="_blank"
                                                     style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: white; text-decoration: none; background-color: #0FBA68; border-top: 15px solid #0FBA68; border-bottom: 15px solid #0FBA68; border-left: 120px solid #0FBA68; border-right: 120px solid #0FBA68; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; display: inline-block;"
                                                     class="mobile-button desk-button">
-                                                    VERIFY EMAIL
+                                                    {{ __("verify_btn") }}
                                                 </a>
                                             </td>
                                         </tr>
