@@ -16,7 +16,6 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="mb-8">
                         <h1 class="text-xl text-[#010414] font-black">{{ __('title') }}</h1>
                         <p class="text-[#808189] text-md">{{ __('info') }}</p>
@@ -29,11 +28,6 @@
                         :errors="$errors" />
                     <x-Input-field type="password" name="password_confirmation" label="conf_password"
                         placeholder="for_conf_password" :errors="$errors" />
-                    <div class="mt-3">
-                        <input class="w-[15px] form-check-input" type="checkbox" name="remember_device" id="remember_device">
-                        {{ __('remember') }} 
-                       
-                    </div>
                     <div class="mt-4">
                         <button name="register"
                             class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full h-12 bg-[#0FBA68]"
