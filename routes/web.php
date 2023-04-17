@@ -11,9 +11,10 @@ Route::middleware('guest')->group(function () {
     Route::view('login', 'sessions.login')->name("login");
     Route::post('login', [LoginController::class, 'login']);
     Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail'])->name('confirm-account');
-    
 });
 
 Route::view('confirmation-status', 'email.confirmation-message');
-
 Route::view("landing-worldwide", "components.landing-worldwide");
+Route::view("reset-password", 'email.reset-password');
+
+Route::post("logout", [LoginController::class, 'destroy'])->middleware('auth');
