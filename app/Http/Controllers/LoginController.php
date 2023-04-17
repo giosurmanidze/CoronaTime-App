@@ -12,22 +12,22 @@ class LoginController extends Controller
     {
         $validated = $request->validated();
 
-        $login = $validated['login'];
+        $username = $validated['username'];
         $password = $validated['password'];
 
 
-        if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
-            $user = User::where('email', $login)->first();
+        if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
+            $user = User::where('email', $username)->first();
         } else {
-            $user = User::where('name', $login)->first();
+            $user = User::where('name', $username)->first();
         }
 
         if (!$user) {
-            return back()->withInput($request->only('login', 'remember'))->withErrors(['login' => trans("user_not_found")]);
+            return back()->withInput($request->only('username', 'remember'))->withErrors(['username' => trans("user_not_found")]);
         }
 
         if (!$user->email_verified_at || !password_verify($password, $user->password)) {
-            return back()->withInput($request->only('login', 'remember'))->withErrors(['password' => trans("user_password_incorrect")]);
+            return back()->withInput($request->only('username', 'remember'))->withErrors(['password' => trans("user_password_incorrect")]);
         }
 
         auth()->login($user, $request->input('remember', false));
