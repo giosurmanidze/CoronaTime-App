@@ -15,6 +15,5 @@ Route::middleware('guest')->group(function () {
 
 Route::view('confirmation-status', 'email.confirmation-message');
 Route::view("landing-worldwide", "components.landing-worldwide");
-Route::view("reset-password", 'email.reset-password');
 
 Route::post("logout", [LoginController::class, 'destroy'])->middleware('auth');
