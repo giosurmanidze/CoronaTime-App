@@ -9,10 +9,8 @@
                         <img src="images/Group 1.jpg" class="w-[150px] mb-3" />
                         <div class="text-black flex items-center cursor-pointer">
                             <select id="language-select" onchange="window.location.href = this.value;">
-                                <option value="{{ route('register', ['language' => 'en']) }}"
-                                    @if (app()->getLocale() == 'en') selected @endif>English</option>
-                                <option value="{{ route('register', ['language' => 'ka']) }}"
-                                    @if (app()->getLocale() == 'ka') selected @endif>Georgian</option>
+                                <option value="{{ route('register', ['language' => 'en']) }}" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>English</option>
+                                <option value="{{ route('register', ['language' => 'ka']) }}" {{ app()->getLocale() === 'ka' ? 'selected' : '' }}>Georgian</option>                         
                             </select>
                         </div>
                     </div>

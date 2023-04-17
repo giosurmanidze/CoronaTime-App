@@ -2,17 +2,16 @@
     <x-slot name="content">
         <div class="flex flex-col md:flex-row h-screen">
             <div class="md:w-3/5 h-screen flex justify-center md:justify-start lg:ml-10  items-center w-full">
-                <form method="POST" action="/login" class="w-full max-w-md px-4 md:ml-10 flex flex-col md:gap-2 gap-4">
+                <form method="POST" action="{{ route('store-login') }}"
+                    class="w-full max-w-md px-4 md:ml-10 flex flex-col md:gap-2 gap-4">
                     @csrf
 
                     <div class="flex justify-between">
                         <img src="images/Group 1.jpg" class="w-[150px] mb-3" />
                         <div class="text-black flex items-center cursor-pointer">
                             <select id="language-select" onchange="window.location.href = this.value;">
-                                <option value="{{ route('login', ['language' => 'en']) }}"
-                                    @if (app()->getLocale() == 'en') selected @endif>English</option>
-                                <option value="{{ route('login', ['language' => 'ka']) }}"
-                                    @if (app()->getLocale() == 'ka') selected @endif>Georgian</option>
+                                <option value="{{ route('store-login', ['language' => 'en']) }}" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>English</option>
+                                <option value="{{ route('store-login', ['language' => 'ka']) }}" {{ app()->getLocale() === 'ka' ? 'selected' : '' }}>Georgian</option>
                             </select>
                         </div>
                     </div>
@@ -22,11 +21,11 @@
                     </div>
                     <div class="2xl:mt-3 relative">
                         <label class="block text-[#010414] font-bold mb-2" for="login">
-                            Email or Username
+                            {{ __('user_name') }}
                         </label>
                         <input
                             class="appearance-none border h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old('login')) && !$errors->has('login')) border-green-500 @endif @if ($errors->has('login')) border-red-500 @endif"
-                            id="login" type="text" name="login" placeholder="Enter your email or username"
+                            id="login" type="text" name="login" placeholder="{{ __('login_user') }}"
                             value="{{ old('login') ?: request()->cookie('remember_token') ?? '' }}">
                         @if (!empty(old('login')) && !$errors->has('login'))
                             <img class="absolute right-1 top-12" src="images/checkbox-circle-fill.jpg" />
@@ -40,11 +39,11 @@
                     </div>
                     <div class="2xl:mt-3 relative">
                         <label class="block text-[#010414] font-bold mb-2" for="password">
-                            Password
+                            {{ __('Password') }}
                         </label>
                         <input
                             class="appearance-none border h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old('password')) && !$errors->has('password')) border-green-500 @endif @if ($errors->has('password')) border-red-500 @endif"
-                            id="password" type="password" name="password" placeholder="Enter your password" required
+                            id="password" type="password" name="password" placeholder="{{ __('for_password') }}"
                             value="{{ old('password') ?: request()->cookie('remember_token_password') ?? '' }}">
 
                         @if (!empty(old('password')) && !$errors->has('password'))

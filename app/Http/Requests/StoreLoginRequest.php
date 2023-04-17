@@ -14,9 +14,18 @@ class StoreLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'login' => 'required',
+            'login' => 'required|min:3',
             'password' => 'required',
         ];
     }
-    
+
+
+    public function messages()
+    {
+
+        return [
+            'login.min' => __('validation.min', ['attribute' => __('name')]),
+            'login.exists' => __('validation.exists'),
+        ];
+    }
 }
