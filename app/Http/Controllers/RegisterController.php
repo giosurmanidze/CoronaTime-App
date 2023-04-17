@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Mail\ConfirmationEmail;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
@@ -27,7 +26,6 @@ class RegisterController extends Controller
     }
 
 
-
     public function confirmEmail(User $user): View
     {
         if (!$user->email_verified_at) {
@@ -37,7 +35,6 @@ class RegisterController extends Controller
 
         return view('email.activated-account');
     }
-
 
     private function sendConfirmationEmail(User $user): void
     {
