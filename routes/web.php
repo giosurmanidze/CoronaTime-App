@@ -16,7 +16,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::view('confirmation-status', 'email.confirmation-message')->name("confirmation-message");
-Route::view("landing-worldwide", "components.landing-worldwide")->name("landing-worldwide");
+
 
 Route::view("forgot-password", 'components.reset-password')->name("forgot-password");
 Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
