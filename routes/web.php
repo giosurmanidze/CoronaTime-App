@@ -12,3 +12,6 @@ Route::middleware('guest')->group(function () {
 
 Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail'])->name('confirm-account');
 Route::view('confirmation-status', 'email.confirmation-message');
+
+Route::view("landing-worldwide", "components.landing-worldwide")->name("landing-worldwide");
+

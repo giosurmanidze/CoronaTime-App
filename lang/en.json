@@ -17,6 +17,10 @@
     "conf_btn": "click this button to verify your email",
     "verify_btn": "VERIFY EMAIL",
     "conf_message": "We have sent you a confirmation email",
-    "password": "password"
-
+    "password": "password",
+    "logout": "  Log out",
+    "WorldWide_title": "Worldwide Statistics",
+    "by_country": "By country",
+    "new_cases": "New cases"
+    
 }
