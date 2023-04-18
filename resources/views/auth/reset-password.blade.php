@@ -9,6 +9,8 @@
                     class="w-full max-w-md px-4 md:ml-10 flex flex-col md:gap-10 gap-4">
                     @csrf
 
+                    <input type="hidden" name="token" value="{{ $token }}">
+
                     <div class="relative w-full">
                         <label class="block text-[#010414] font-bold mb-2" for="password">
                             {{ __('new_pass') }}

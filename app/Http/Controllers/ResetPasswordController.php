@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
@@ -13,19 +14,15 @@ class ResetPasswordController extends Controller
         return view('auth.reset-password', ['request' => $request, 'token' => $token]);
     }
 
-    public function reset(Request $request)
+
+    public function reset(ResetPasswordRequest $request) 
     {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed|min:3',
-            'password_confirmation' => 'required',
-        ]);
-    
-        $credentials = $request->only(
-            'email', 'password', 'password_confirmation', 'token'
-        );
-    
+        $credentials = [
+            'token' => $request->input('token'),
+            'password' => $request->input('password'),
+            'password_confirmation' => $request->input('password_confirmation'),
+        ];
+
         $response = Password::broker()->reset(
             $credentials,
             function ($user, $password) {
@@ -34,14 +31,11 @@ class ResetPasswordController extends Controller
                 ])->save();
             }
         );
-        
-    
-        if ($response == Password::PASSWORD_RESET) {
+
+        if ($response === Password::PASSWORD_RESET) {
             return redirect('/login')->with('status', trans('passwords.reset'));
         } else {
             return back()->withErrors(['email' => [trans($response)]]);
         }
     }
-    
-
 }

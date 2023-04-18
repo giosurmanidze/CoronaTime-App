@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmailRequest;
 use App\Mail\CustomResetEmail;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Mail;
 
@@ -16,12 +16,7 @@ class ForgotPasswordController extends Controller
     }
 
 
-    protected function validateEmail(Request $request)
-    {
-        $request->validate(['email' => 'required|email']);
-    }
-
-    public function sendResetLinkEmail(Request $request)
+    public function sendResetLinkEmail(EmailRequest $request)
     {
         $this->validateEmail($request);
 
