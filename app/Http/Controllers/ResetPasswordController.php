@@ -15,12 +15,15 @@ class ResetPasswordController extends Controller
     }
 
 
-    public function reset(ResetPasswordRequest $request) 
+    public function reset(ResetPasswordRequest $request)
     {
+        $validatedData = $request->validated();
+
         $credentials = [
-            'token' => $request->input('token'),
-            'password' => $request->input('password'),
-            'password_confirmation' => $request->input('password_confirmation'),
+            'token' => $validatedData['token'],
+            'email' => $validatedData["email"],
+            'password' => $validatedData['password'],
+            'password_confirmation' => $validatedData['password_confirmation'],
         ];
 
         $response = Password::broker()->reset(
