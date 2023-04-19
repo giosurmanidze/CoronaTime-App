@@ -11,6 +11,8 @@
 
                     <input type="hidden" name="token" value="{{ $token }}">
 
+                    <input type="hidden" name="email" value="{{ request()->query('email') }}">
+
                     <div class="relative w-full">
                         <label class="block text-[#010414] font-bold mb-2" for="password">
                             {{ __('new_pass') }}

@@ -5,22 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EmailRequest;
 use App\Mail\CustomResetEmail;
 use App\Models\User;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Mail;
 
 class ForgotPasswordController extends Controller
 {
-    public function broker()
-    {
-        return Password::broker();
-    }
-
-
     public function sendResetLinkEmail(EmailRequest $request)
     {
-        $this->validateEmail($request);
+        $validatedData = $request->validated();
 
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $validatedData["email"])->first();
 
         if (!$user) {
             return back()->withErrors(
@@ -30,9 +23,9 @@ class ForgotPasswordController extends Controller
 
         $token = app('auth.password.broker')->createToken($user);
 
-        $resetLink = url('/reset-password/' . $token);
+        $resetLink = url('/reset-password/' . $token . '?email=' . $validatedData["email"]);
 
-        Mail::to($request->email)->send(new CustomResetEmail($resetLink));
+        Mail::to($validatedData["email"])->send(new CustomResetEmail($resetLink));
 
         return redirect("/reset-link-status")->with('status', trans('reset_sent_message'));
     }
