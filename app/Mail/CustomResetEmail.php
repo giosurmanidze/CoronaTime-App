@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
@@ -26,11 +27,11 @@ class CustomResetEmail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): Mailable
     {
         return $this->view('email.reset-password-email')
-                    ->with([
-                        'resetLink' => $this->resetLink,
-                    ]);
+            ->with([
+                'resetLink' => $this->resetLink,
+            ]);
     }
 }

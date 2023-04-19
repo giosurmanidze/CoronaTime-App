@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EmailRequest;
 use App\Mail\CustomResetEmail;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 
 class ForgotPasswordController extends Controller
 {
-    public function sendResetLinkEmail(EmailRequest $request)
+    public function sendResetLinkEmail(EmailRequest $request): RedirectResponse
     {
         $validatedData = $request->validated();
 
