@@ -15,14 +15,5 @@ Route::middleware('guest')->group(function () {
     Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail'])->name('confirm-account');
 });
 
-Route::view('confirmation-status', 'email.confirmation-message')->name("confirmation-message");
-
-
-Route::view("forgot-password", 'components.reset-password')->name("forgot-password");
-Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-
-Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
-Route::view("reset-link-status", "email.reset-link-status")->name("reset-status");
-
-Route::post("logout", [LoginController::class, 'logout'])->middleware('auth')->name("logout");
+Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail'])->name('confirm-account');
+Route::view('confirmation-status', 'email.confirmation-message');
