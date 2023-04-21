@@ -7,7 +7,13 @@ module.exports = {
     ],
     theme: {
         extend: {
-            screens: {},
+            backgroundColor: {
+                gradient:
+                    "linear-gradient(109.6deg, #FCFF81 -18.12%, #C2FF9D 47.7%, #75A4FF 114.98%)",
+            },
+            screens: {
+                xs: "290px",
+            },
         },
     },
     plugins: [],
