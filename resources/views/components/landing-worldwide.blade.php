@@ -35,7 +35,7 @@
                                 <span class="w-[80px] h-[3px] bg-black absolute left-0 top-[35px] z-30"></span>
                             @endif
                         </div>
-                        <a href="/statistics-by-country">{{ __('by_country') }}</a>
+                        <a href='{{ route('search-country', ['language' => app()->getLocale()]) }}'>{{ __('by_country') }}</a>
                         <div class="h-[1px] bg-[#F6F6F7] w-full absolute top-9"></div>
                     </div>
                 </div>

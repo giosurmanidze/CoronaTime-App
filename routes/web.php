@@ -16,5 +16,4 @@ Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail']
 Route::view('confirmation-status', 'email.confirmation-message');
 
 Route::get("landing-worldwide", [dashboardController::class, 'getWorldwideStatistics'])->name("landing-worldwide");
-Route::get('statistics-by-country', [CountryStatisticsController::class, 'getAllStatistics'])->name('statistics-by-country');
-Route::post('statistics-by-country/{language}/{query?}', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
+Route::get('statistics-by-country/{language}', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
