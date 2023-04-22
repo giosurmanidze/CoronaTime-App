@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Statistics extends Model
 {
@@ -19,7 +20,7 @@ class Statistics extends Model
         'updated_at',
     ];
 
-    public function scopeFilterAndSort($query, $search, $language, $sort, $sortByCases, $sortByDeaths, $sortByReceovered) 
+    public function scopeFilterAndSort($query, $search, $language, $sort, $sortByCases, $sortByDeaths, $sortByReceovered): Builder
     {
         $query->when($search ?? false, function ($query) use ($search, $language) {
             $query->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, '$." . $language . "'))) LIKE ?", [strtolower($search) . '%']);

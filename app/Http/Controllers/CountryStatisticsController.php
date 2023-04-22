@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statistics;
+use Illuminate\View\View;
 
 class CountryStatisticsController extends Controller
 {
-    public function searchCountry($language)
+    public function searchCountry($language): View
     {
 
         $search = request('search');
