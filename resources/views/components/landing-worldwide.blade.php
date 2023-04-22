@@ -11,9 +11,9 @@
                             <select id="language-select" class="cursor-pointer"
                                 onchange="window.location.href = this.value;">
                                 <option value="{{ route('landing-worldwide', ['language' => 'en']) }}"
-                                    {{ app()->getLocale() === 'en' ? 'selected' : '' }}>{{ __('English') }}</option>
+                                   >{{ __('English') }}</option>
                                 <option value="{{ route('landing-worldwide', ['language' => 'ka']) }}"
-                                    {{ app()->getLocale() === 'ka' ? 'selected' : '' }}>{{ __('Georgian') }}</option>
+                                    >{{ __('Georgian') }}</option>
                             </select>
 
                         </div>
