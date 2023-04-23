@@ -17,8 +17,8 @@
                             </select>
 
                         </div>
-                        <h1 class="border-r-[3px] pr-5 xs:hidden sm:block">User Name</h1>
-                        <form method="POST" action="">
+                        <h1 class="border-r-[3px] pr-5 xs:hidden sm:block">{{ auth()->user()->name }}</h1>
+                        <form method="POST" action="{{ route("logout") }}">
                             @csrf
                             <button type="submit" class="xs:hidden sm:flex">{{ __('logout') }}</button>
                         </form>
