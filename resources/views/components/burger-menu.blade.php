@@ -7,7 +7,7 @@
     </style>
     <header class="flex justify-between items-center bg-white drop-shadow-sm py-4">
         <button class="flex md:hidden flex-col items-center align-middle" @click="openMenu = !openMenu">
-            <img src="images/menu-3-line.svg" />
+            <img src="/images/menu-3-line.svg" />
         </button>
     </header>
     <nav class="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm z-10" :class="openMenu ? 'visible' : 'invisible'"

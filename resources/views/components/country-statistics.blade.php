@@ -11,9 +11,13 @@
                             <select id="language-select" class="cursor-pointer"
                                 onchange="window.location.href = this.value;">
                                 <option value="{{ route('search-country', ['language' => 'en']) }}"
-                                  >{{ __('English') }}</option>
+                                    {{ app()->getLocale() === 'en' ? 'selected' : '' }}
+                                    >{{ __('English') }}
+                                </option>
                                 <option value="{{ route('search-country', ['language' => 'ka']) }}"
-                                    >{{ __('Georgian') }}</option>
+                                    {{ app()->getLocale() === 'ka' ? 'selected' : '' }}
+                                    >{{ __('Georgian') }}
+                                </option>
                             </select>
                         </div>
                         <h1 class="border-r-[3px] pr-5 xs:hidden sm:block">User Name</h1>
@@ -29,12 +33,12 @@
                     <h1 class="text-xl"><strong>{{ __('WorldWide_title') }}</strong></h1>
                     <div class="flex gap-10 relative">
                         <div class="relative">
-                            <a href="/landing-worldwide">{{ __('WorldWide') }}</a>
+                            <a href="{{ route("landing-worldwide") }}">{{ __('WorldWide') }}</a>
                             @if (request()->is('landing-worldwide'))
                                 <span class="w-[80px] h-[3px] bg-black absolute left-0 top-[35px] z-30"></span>
                             @endif
                         </div>
-                        <a href="{{ route('search-country', ['language' => 'en']) }}">{{ __('by_country') }}</a>
+                        <a href="{{ route('search-country') }}">{{ __('by_country') }}</a>
                         <div class="h-[1px] bg-[#F6F6F7] w-full absolute top-9"></div>
                     </div>
                 </div>
@@ -53,11 +57,12 @@
 
                 </div>
             </div>
-            <div class="w-[90%] m-auto mt-7">
+            <div class="md:w-[90%] xs:w-full m-auto mt-7">
                 <div class="w-full border-collapse border border-[#F6F6F7] rounded-lg">
-                    <div class="w-full bg-[#F6F6F7] w-[80%] flex">
-                        <div class="px-4 py-2 w-[15%] flex items-center justify-center">
-                            <div>location</div>
+                    <div class="w-full bg-[#F6F6F7] flex xs:justify-between md:justify-start">
+                        <div
+                            class="px-4 py-2 xs:w-[25%] xs:text-sm xs:px-2 md:w-[20%] flex items-center justify-start">
+                            <strong>location</strong>
                             <div>
                                 <form method="GET" action="{{ route('search-country', [app()->getLocale()]) }}">
 
@@ -66,8 +71,8 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="px-4 py-2 w-[15%] flex items-center justify-center">
-                            <div>New cases</div>
+                        <div class="px-4 py-2 xs:w-[35%] xs:text-sm xs:px-2 md:w-[20%] flex items-center justify-start">
+                            <strong>New cases</strong>
                             <div>
                                 <form method="GET" action="{{ route('search-country', [app()->getLocale()]) }}">
 
@@ -76,8 +81,8 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="px-4 py-2 w-[15%] flex items-center justify-center">
-                            <div>Deaths</div>
+                        <div class="px-4 py-2 xs:w-[25%] xs:text-sm xs:px-2 md:w-[20%] flex items-center justify-start">
+                            <strong>Deaths</strong>
                             <div>
                                 <form method="GET" action="{{ route('search-country', [app()->getLocale()]) }}">
 
@@ -86,8 +91,8 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="px-4 py-2 w-[15%] flex items-center justify-center">
-                            <div>Recovered</div>
+                        <div class="px-4 py-2 xs:w-[25%] xs:text-sm xs:px-2 md:w-[20%] flex items-center justify-start">
+                            <strong>Recovered</strong>
                             <div>
                                 <form method="GET" action="{{ route('search-country', [app()->getLocale()]) }}">
 
@@ -100,25 +105,38 @@
                     <div class="max-h-[60vh] overflow-y-auto">
                         <div>
                             @if (app()->getLocale() === 'en')
-                                @foreach ($data as $d)
+                                @foreach ($data as $info)
                                     <div class="border-t border-[#F6F6F7] flex">
-                                        <div class="px-4 py-2 w-[15%] flex justify-center">
-                                            {{ json_decode($d->name, true)['en'] }}
+                                        <div
+                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
+                                            {{ json_decode($info->name, true)['en'] }}
                                         </div>
-                                        <div class="px-4 py-2 w-[15%] text-center">{{ $d->confirmed }}</div>
-                                        <div class="px-4 py-2 w-[15%] text-center">{{ $d->deaths }}</div>
-                                        <div class="px-4 py-2 w-[15%] text-center">{{ $d->recovered }}</div>
+                                        <div
+                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
+                                            {{ $info->confirmed }}
+                                        </div>
+                                        <div
+                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
+                                            {{ $info->deaths }}
+                                        </div>
+                                        <div
+                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
+                                            {{ $info->recovered }}
+                                        </div>
                                     </div>
                                 @endforeach
                             @else
-                                @foreach ($data as $d)
+                                @foreach ($data as $info)
                                     <div class="border-t border-[#F6F6F7] flex">
-                                        <div class="px-4 py-2 w-[15%] flex justify-center">
-                                            {{ json_decode($d->name, true)['ka'] }}
+                                        <div class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
+                                            {{ json_decode($info->name, true)['ka'] }}
                                         </div>
-                                        <div class="px-4 py-2 w-[15%] text-center">{{ $d->confirmed }}</div>
-                                        <div class="px-4 py-2 w-[15%] text-center">{{ $d->deaths }}</div>
-                                        <div class="px-4 py-2 w-[15%] text-center">{{ $d->recovered }}</div>
+                                        <div class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">{{ $info->confirmed }}
+                                        </div>
+                                        <div class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">{{ $info->deaths }}
+                                        </div>
+                                        <div class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">{{ $info->recovered }}
+                                        </div>
                                     </div>
                                 @endforeach
                             @endif

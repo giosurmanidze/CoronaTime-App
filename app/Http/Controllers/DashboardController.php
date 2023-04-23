@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Statistics;
 use Illuminate\View\View;
 
-class dashboardController extends Controller
+class DashboardController extends Controller
 {
     public function getWorldwideStatistics(): View
     {

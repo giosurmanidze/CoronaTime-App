@@ -37,9 +37,6 @@ class FetchCountryStatistics extends Command
     
         $data2 = json_decode($response2->getBody(), true);
     
-        $totalDeaths = 0;
-        $totalRecoveries = 0;
-        $totalConfirmed = 0;
     
         foreach ($data2 as $countryData2) {
             $code = $countryData2['code'];
@@ -56,9 +53,10 @@ class FetchCountryStatistics extends Command
     
             $data1 = json_decode($response1->getBody(), true);
     
-            $totalDeaths += $data1['deaths'];
-            $totalRecoveries += $data1['recovered'];
-            $totalConfirmed += $data1['confirmed'];
+
+            $totalDeaths = Statistics::sum('deaths');
+            $totalRecoveries = Statistics::sum('recovered');
+            $totalConfirmed = Statistics::sum('confirmed');
     
             Statistics::updateOrCreate(['code' => $code], [
                 'name' => $name, 
