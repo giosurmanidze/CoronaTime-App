@@ -14,22 +14,19 @@ Route::middleware('guest')->group(function () {
     Route::post('register', [RegisterController::class, 'register'])->name('register');
     Route::view('login', 'sessions.login')->name("login");
     Route::post('login', [LoginController::class, 'login'])->name("store-login");
-    Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail'])->name('confirm-account');
+    Route::view("forgot-password", 'components.reset-password')->name("forgot-password");
+    Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::view("reset-link-status", "email.reset-link-status")->name("reset-status");
+    Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
     Route::view('confirmation-status', 'email.confirmation-message');
+    Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail'])->name('confirm-account');
 });
 
+Route::post("logout", [LoginController::class, 'logout'])->middleware('auth')->name("logout");
 
-Route::middleware('admin')->group(function () {
+
+Route::middleware('emailVerified')->group(function () {
     Route::get("landing-worldwide", [DashboardController::class, 'getWorldwideStatistics'])->name("landing-worldwide");
     Route::get('statistics-by-country', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
 });
-
-
-Route::view("forgot-password", 'components.reset-password')->name("forgot-password");
-Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-
-Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
-Route::view("reset-link-status", "email.reset-link-status")->name("reset-status");
-
-Route::post("logout", [LoginController::class, 'logout'])->middleware('auth')->name("logout");
