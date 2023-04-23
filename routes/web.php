@@ -23,3 +23,13 @@ Route::middleware('admin')->group(function () {
     Route::get("landing-worldwide", [DashboardController::class, 'getWorldwideStatistics'])->name("landing-worldwide");
     Route::get('statistics-by-country', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
 });
+
+
+Route::view("forgot-password", 'components.reset-password')->name("forgot-password");
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
+Route::view("reset-link-status", "email.reset-link-status")->name("reset-status");
+
+Route::post("logout", [LoginController::class, 'logout'])->middleware('auth')->name("logout");
