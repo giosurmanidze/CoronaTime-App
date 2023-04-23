@@ -83,6 +83,7 @@
 <body>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
+
             <td bgcolor="#ffffff" align="center" style="padding: 70px 15px 70px 15px;">
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="500"
                     class="responsive-table">

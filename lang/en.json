@@ -35,5 +35,11 @@
     "new_pass": "New password",
     "enter_new": "Enter new password",
     "repeat_pass": "Repeat password",
-    "save": "SAVE CHANGES"
+    "save": "SAVE CHANGES",
+    "logout": "  Log out",
+    "WorldWide_title": "Worldwide Statistics",
+    "by_country": "By country",
+    "new_cases": "New cases"
+    
+
 }
