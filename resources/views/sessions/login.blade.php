@@ -18,8 +18,8 @@
                         </div>
                     </div>
                     <div class="mb-8">
-                        <h1 class="text-xl text-[#010414] font-black">{{ __('title_login') }}</h1>
-                        <p class="text-[#808189] text-md mt-1">{{ __('info_login') }}</p>
+                        <h1 class="text-xl text-[#010414] font-black">{{ __('title_login_page') }}</h1>
+                        <p class="text-[#808189] text-md mt-1">{{ __('info_login_page') }}</p>
                     </div>
                     <div class="2xl:mt-3 relative">
                         <label class="block text-[#010414] font-bold mb-2" for="username">
@@ -27,7 +27,7 @@
                         </label>
                         <input
                             class="appearance-none border h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old('username')) && !$errors->has('username')) border-green-500 @endif @if ($errors->has('username')) border-red-500 @endif"
-                            id="username" type="text" name="username" placeholder="{{ __('login_user') }}"
+                            id="username" type="text" name="username" placeholder="{{ __('login_username') }}"
                             value="{{ old('username') ?: request()->cookie('remember_token') ?? '' }}">
                         @if (!empty(old('login')) && !$errors->has('username'))
                             <img class="absolute right-1 top-12" src="images/checkbox-circle-fill.jpg" />
@@ -69,7 +69,7 @@
                         </div>
 
                         <a class="text-sm w-full text-[#2029F3] font-bold flex justify-end"
-                            href="{{ route('forgot-password') }}">{{ __('forgot_password') }}</a>
+                            href="{{ route('forgot-password') }}">{{ __('forgot_password_text') }}</a>
                     </div>
                     <div class="mt-4">
                         <button
@@ -79,8 +79,8 @@
                         </button>
                     </div>
                     <div class="text-center mt-2">
-                        {{ __('dont_have') }} <strong><a href="/register"
-                                class="text-black">{{ __('login_sign_up') }}</a></strong>
+                        {{ __('dont_have_acc') }} <strong><a href="/register"
+                                class="text-black">{{ __('login_signup') }}</a></strong>
                     </div>
                 </form>
             </div>
