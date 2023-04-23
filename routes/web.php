@@ -3,7 +3,7 @@
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CountryStatisticsController;
-use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
@@ -17,8 +17,7 @@ Route::middleware('guest')->group(function () {
     Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail'])->name('confirm-account');
 });
 
-Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail'])->name('confirm-account');
 Route::view('confirmation-status', 'email.confirmation-message');
 
-Route::get("landing-worldwide", [dashboardController::class, 'getWorldwideStatistics'])->name("landing-worldwide");
-Route::get('statistics-by-country/{language}', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
+Route::get("landing-worldwide", [DashboardController::class, 'getWorldwideStatistics'])->name("landing-worldwide");
+Route::get('statistics-by-country', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');

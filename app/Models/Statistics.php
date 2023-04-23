@@ -20,28 +20,30 @@ class Statistics extends Model
         'updated_at',
     ];
 
-    public function scopeFilterAndSort($query, $search, $language, $sort, $sortByCases, $sortByDeaths, $sortByReceovered): Builder
+    public function scopeFilterAndSort(Builder  $query, string $search, string $sort, string $sortByCases, string $sortByDeaths, string $sortByReceovered): Builder
     {
-        $query->when($search ?? false, function ($query) use ($search, $language) {
-            $query->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, '$." . $language . "'))) LIKE ?", [strtolower($search) . '%']);
+        $lang = app()->getLocale();
+
+        $query->when($search ?? false, function ($query) use ($search, $lang) {
+            $query->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, '$." .  $lang . "'))) LIKE ?", [strtolower($search) . '%']);
         });
 
 
         if ($sort === 'ascending') {
-            $query->orderByRaw("JSON_UNQUOTE(JSON_EXTRACT(name, '$." . $language . "')) COLLATE utf8mb4_bin ASC");
+            $query->orderByRaw("JSON_UNQUOTE(JSON_EXTRACT(name, '$." .  $lang . "')) COLLATE utf8mb4_bin ASC");
         } elseif ($sort === 'descending') {
-            $query->orderByRaw("JSON_UNQUOTE(JSON_EXTRACT(name, '$." . $language . "')) COLLATE utf8mb4_bin DESC");
+            $query->orderByRaw("JSON_UNQUOTE(JSON_EXTRACT(name, '$." .  $lang . "')) COLLATE utf8mb4_bin DESC");
         }
 
         $query->when($sortByCases, function ($query) use ($sortByCases) {
             $query->orderBy('confirmed', $sortByCases === 'ascending' ? 'asc' : 'desc');
         })
-        ->when($sortByDeaths, function ($query) use ($sortByDeaths) {
-            $query->orderBy('deaths', $sortByDeaths === 'ascending' ? 'asc' : 'desc');
-        })
-        ->when($sortByReceovered, function ($query) use ($sortByReceovered) {
-            $query->orderBy('recovered', $sortByReceovered === 'ascending' ? 'asc' : 'desc');
-        });
+            ->when($sortByDeaths, function ($query) use ($sortByDeaths) {
+                $query->orderBy('deaths', $sortByDeaths === 'ascending' ? 'asc' : 'desc');
+            })
+            ->when($sortByReceovered, function ($query) use ($sortByReceovered) {
+                $query->orderBy('recovered', $sortByReceovered === 'ascending' ? 'asc' : 'desc');
+            });
 
         return $query;
     }
