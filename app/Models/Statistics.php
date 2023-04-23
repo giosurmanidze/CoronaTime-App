@@ -20,7 +20,7 @@ class Statistics extends Model
         'updated_at',
     ];
 
-    public function scopeFilterAndSort(Builder  $query, string|null $search, string|null $sort, string|null $sortByCases, string|null $sortByDeaths, string|null $sortByReceovered)
+    public function scopeFilterAndSort(Builder  $query, string|null $search, string|null $sort, string|null $sortByCases, string|null $sortByDeaths, string|null $sortByReceovered): Builder
     {
         $lang = app()->getLocale();
 
