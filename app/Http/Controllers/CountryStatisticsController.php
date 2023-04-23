@@ -10,11 +10,11 @@ class CountryStatisticsController extends Controller
     public function searchCountry(): View
     {
 
-        $search = request('search', '');
-        $sort = request('sort', '');
-        $sortByCases = request('sort_by_cases', ''); 
-        $sortByDeaths= request('sort_by_deaths', ''); 
-        $sortByReceovered= request('sort_by_recovered', ''); 
+        $search = request('search');
+        $sort = request('sort');
+        $sortByCases = request('sort_by_cases'); 
+        $sortByDeaths= request('sort_by_deaths'); 
+        $sortByReceovered= request('sort_by_recovered'); 
     
         $data = Statistics::filterAndSort($search,$sort, $sortByCases, $sortByDeaths, $sortByReceovered)->get(); 
     
