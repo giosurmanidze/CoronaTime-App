@@ -15,9 +15,11 @@ Route::middleware('guest')->group(function () {
     Route::view('login', 'sessions.login')->name("login");
     Route::post('login', [LoginController::class, 'login'])->name("store-login");
     Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail'])->name('confirm-account');
+    Route::view('confirmation-status', 'email.confirmation-message');
 });
 
-Route::view('confirmation-status', 'email.confirmation-message');
 
-Route::get("landing-worldwide", [DashboardController::class, 'getWorldwideStatistics'])->name("landing-worldwide");
-Route::get('statistics-by-country', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
+Route::middleware('admin')->group(function () {
+    Route::get("landing-worldwide", [DashboardController::class, 'getWorldwideStatistics'])->name("landing-worldwide");
+    Route::get('statistics-by-country', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
+});
