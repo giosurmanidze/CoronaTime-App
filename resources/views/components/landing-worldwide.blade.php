@@ -6,6 +6,7 @@
                     <div class="flex items-center">
                         <img src="images/Group 1.jpg" class="w-[150px]" />
                     </div>
+
                     <div class="flex items-center sm:gap-[25px] xs:gap-3">
                         <div class="text-black flex items-center cursor-pointer">
                             <select id="language-select" class="cursor-pointer"
@@ -30,12 +31,12 @@
                     <h1 class="text-xl"><strong>{{ __('WorldWide_title') }}</strong></h1>
                     <div class="flex gap-10 relative">
                         <div class="relative flex gap-5 items-center">
-                            <a href="/landing-worldwide"
+                            <a href="{{ route('landing-worldwide', ['language' => app()->getLocale()]) }}"
                                 class="{{ request()->is('landing-worldwide') ? 'border-b-[3px] border-black pb-[10px] z-20' : '' }}">{{ __('WorldWide') }}</a>
                             <a class="pb-[10px]"
                                 href='{{ route('search-country', ['language' => app()->getLocale()]) }}'>{{ __('by_country') }}</a>
                         </div>
-                        <div class="h-[1px] bg-[#F6F6F7] w-full absolute xs:top-[60px] xss:top-9"></div>
+                        <div class="h-[1px] bg-[#F6F6F7] w-full absolute xs:top-9"></div>
 
                     </div>
                 </div>
