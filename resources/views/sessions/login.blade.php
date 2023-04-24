@@ -11,9 +11,9 @@
                         <div class="text-black flex items-center cursor-pointer">
                             <select id="language-select" onchange="window.location.href = this.value;">
                                 <option value="{{ route('store-login', ['language' => 'en']) }}"
-                                    {{ app()->getLocale() === 'en' ? 'selected' : '' }}>English</option>
+                                    {{ app()->getLocale() === 'en' ? 'selected' : '' }}>{{ __('English') }}</option>
                                 <option value="{{ route('store-login', ['language' => 'ka']) }}"
-                                    {{ app()->getLocale() === 'ka' ? 'selected' : '' }}>Georgian</option>
+                                    {{ app()->getLocale() === 'ka' ? 'selected' : '' }}>{{ __('Georgian') }}</option>
                             </select>
                         </div>
                     </div>

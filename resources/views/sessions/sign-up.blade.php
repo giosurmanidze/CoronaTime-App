@@ -2,15 +2,18 @@
     <x-slot name="content">
         <div class="flex flex-col md:flex-row h-screen">
             <div class="md:w-3/5 h-screen flex justify-center md:justify-start lg:ml-10  items-center w-full">
-                <form method="POST" action="/register" class="w-full max-w-md px-4 md:ml-10 flex flex-col md:gap-2 gap-4 ">
+                <form method="POST" action="/register"
+                    class="w-full max-w-md px-4 md:ml-10 flex flex-col md:gap-2 gap-4 ">
                     @csrf
 
                     <div class="flex justify-between">
                         <img src="images/Group 1.jpg" class="w-[150px] mb-3" />
                         <div class="text-black flex items-center cursor-pointer">
                             <select id="language-select" onchange="window.location.href = this.value;">
-                                <option value="{{ route('register', ['language' => 'en']) }}" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>English</option>
-                                <option value="{{ route('register', ['language' => 'ka']) }}" {{ app()->getLocale() === 'ka' ? 'selected' : '' }}>Georgian</option>                         
+                                <option value="{{ route('register', ['language' => 'en']) }}"
+                                    {{ app()->getLocale() === 'en' ? 'selected' : '' }}>{{ __('English') }}</option>
+                                <option value="{{ route('register', ['language' => 'ka']) }}"
+                                    {{ app()->getLocale() === 'ka' ? 'selected' : '' }}>{{ __('Georgian') }}</option>
                             </select>
                         </div>
                     </div>
@@ -30,7 +33,7 @@
                         <button name="register"
                             class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full h-12 bg-[#0FBA68]"
                             type="submit">
-                          {{ __('sign_up') }}
+                            {{ __('sign_up') }}
                         </button>
                     </div>
                     <div class="text-center mt-2">
