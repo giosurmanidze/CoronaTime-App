@@ -16,13 +16,17 @@
             :class="openMenu ? 'translate-x-0' : 'translate-x-full'">
 
             <li class="border-b border-inherit flex items-center">
-
-                <a href="#" class="block p-4" aria-current="true" @click="openMenu = false">giorgi</a>
-            <img  src="https://imghost.net/ib/ABRej8AKCk1Gwjq_1681898421.png" alt="icons8-user-48.png" width="20"/>
-
+                <div class="block p-4" aria-current="true" @click="openMenu = false">{{ auth()->user()->name }}</div>
+                <img src="https://imghost.net/ib/ABRej8AKCk1Gwjq_1681898421.png" alt="icons8-user-48.png"
+                    width="20" />
             </li>
             <li class="border-b border-inherit flex items-center">
-                <a href="#" class="block p-4" @click="openMenu = false">Log out</a>
+
+                <form method="POST" action="/logout">
+                    @csrf
+                    <button type="submit" class="sm:flex block p-4">{{ __('logout') }}</button>
+                </form>
+           
                 <img width="20" src="https://imghost.net/ib/GC087B92xLk0zkQ_1681897749.png"
                     alt="icons8-log-out-48.png" />
             </li>

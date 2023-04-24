@@ -23,10 +23,11 @@ Route::middleware('guest')->group(function () {
     Route::get('confirm-account/{user}', [RegisterController::class, 'confirmEmail'])->name('confirm-account');
 });
 
-Route::post("logout", [LoginController::class, 'logout'])->middleware('auth')->name("logout");
+Route::post("/logout", [LoginController::class, 'logout'])->middleware('auth')->name("logout");
 
 
 Route::middleware('emailVerified')->group(function () {
     Route::get("landing-worldwide", [DashboardController::class, 'getWorldwideStatistics'])->name("landing-worldwide");
     Route::get('statistics-by-country', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
+    Route::post('statistics-by-country', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
 });
