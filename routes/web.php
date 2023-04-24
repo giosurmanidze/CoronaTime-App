@@ -29,4 +29,5 @@ Route::post("/logout", [LoginController::class, 'logout'])->middleware('auth')->
 Route::middleware('emailVerified')->group(function () {
     Route::get("landing-worldwide", [DashboardController::class, 'getWorldwideStatistics'])->name("landing-worldwide");
     Route::get('statistics-by-country', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
+    Route::post('statistics-by-country', [CountryStatisticsController::class, 'searchCountry'])->name('search-country');
 });
