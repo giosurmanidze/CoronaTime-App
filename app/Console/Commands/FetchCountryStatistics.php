@@ -28,20 +28,20 @@ class FetchCountryStatistics extends Command
     public function handle()
     {
         $client = new Client();
-    
+
         $response2 = $client->get('https://devtest.ge/countries', [
             'headers' => [
                 'accept' => 'application/json',
             ],
         ]);
-    
+
         $data2 = json_decode($response2->getBody(), true);
-    
-    
+
+
         foreach ($data2 as $countryData2) {
             $code = $countryData2['code'];
-            $name = json_encode($countryData2['name']); 
-    
+            $name = json_encode($countryData2['name']);
+
             $response1 = $client->post('https://devtest.ge/get-country-statistics', [
                 'headers' => [
                     'accept' => 'application/json',
@@ -50,16 +50,16 @@ class FetchCountryStatistics extends Command
                     'code' => $code,
                 ],
             ]);
-    
+
             $data1 = json_decode($response1->getBody(), true);
-    
+
 
             $totalDeaths = Statistics::sum('deaths');
             $totalRecoveries = Statistics::sum('recovered');
             $totalConfirmed = Statistics::sum('confirmed');
-    
+
             Statistics::updateOrCreate(['code' => $code], [
-                'name' => $name, 
+                'name' => $name,
                 'code' => $code,
                 'confirmed' => $data1['confirmed'],
                 'recovered' => $data1['recovered'],
@@ -68,12 +68,12 @@ class FetchCountryStatistics extends Command
                 'updated_at' => now(),
             ]);
         }
-        
-        Statistics::updateOrCreate( [
+
+        Statistics::updateOrCreate([
             'name' => json_encode([
                 'ka' => 'მსოფლიოს მასშტაბით',
                 'en' => 'Worldwide',
-            ]), 
+            ]),
             'code'=>'Ww',
             'deaths' => $totalDeaths,
             'recovered' => $totalRecoveries,

@@ -16,12 +16,12 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validated();
         unset($validatedData['password_confirmation']);
-    
+
         $validatedData['password'] = Hash::make($validatedData['password']);
         $user = User::create($validatedData);
-    
+
         $this->sendConfirmationEmail($user);
-    
+
         return redirect('/confirmation-status');
     }
 
