@@ -5,7 +5,7 @@
         {{ __($label) }}
     </label>
     <input
-        class="appearance-none border h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old($name)) && !$errors->has($name)) border-green-500 @endif @if ($errors->has($name)) border-red-500 @endif"
+        class="appearance-none border text-sm h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old($name)) && !$errors->has($name)) border-green-500 @endif @if ($errors->has($name)) border-red-500 @endif"
         id="{{ $name }}" type="{{ $type }}" name="{{ $name }}" placeholder="{{ __($placeholder) }}"
         value="{{ old($name) }}">
     @if (!empty(old($name)) && !$errors->has($name))
