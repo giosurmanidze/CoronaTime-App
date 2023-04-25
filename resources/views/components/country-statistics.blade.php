@@ -9,16 +9,24 @@
                     <div class="flex items-center sm:gap-[25px] xs:gap-3">
                         <div class="text-black flex items-center cursor-pointer">
 
-
-                            <select id="language-select" class="cursor-pointer"
-                                onchange="window.location.href = this.value;">
-                                <option value="{{ route('search-country', ['language' => 'en']) }}"
-                                    {{ app()->getLocale() === 'en' ? 'selected' : '' }}>{{ __('English') }}</option>
-                                <option value="{{ route('search-country', ['language' => 'ka']) }}"
-                                    {{ app()->getLocale() === 'ka' ? 'selected' : '' }}>{{ __('Georgian') }}
-                                </option>
-                            </select>
-
+                            <form method="POST" action="{{ route('search-country') }}">
+                                <select id="language-select" class="cursor-pointer" onchange="changeLanguage(this.value);">
+                                    <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>
+                                        {{ __('English') }}</option>
+                                    <option value="ka" {{ app()->getLocale() === 'ka' ? 'selected' : '' }}>
+                                        {{ __('Georgian') }}</option>
+                                </select>
+                            </form>
+                            
+                            <script>
+                                function changeLanguage(language) {
+                                    let currentUrl = new URL(window.location.href);
+                                    currentUrl.searchParams.set('language', language);
+                                    window.history.replaceState(null, null, currentUrl.href);
+                                    window.location.reload();
+                                }
+                            </script>
+                            
 
                         </div>
                         <h1 class="border-r-[3px] pr-5 xs:hidden sm:block">{{ auth()->user()->name }}</h1>
@@ -43,9 +51,22 @@
                     </div>
                 </div>
                 <div class="w-[90%] m-auto mt-7">
-                    <form method="GET" class="relative"
-                        action="{{ route('search-country', ['language' => app()->getLocale()]) }}">
-                        @csrf
+                    <form method="GET" class="relative" action="{{ route('search-country') }}">
+
+                        @if (request('sort'))
+                            <input type="text" name="sort" hidden value="{{ request('sort') }}">
+                        @endif
+                        @if (request('sort_by_cases'))
+                            <input type="text" name="sort_by_cases" hidden value="{{ request('sort_by_cases') }}">
+                        @endif
+                        @if (request('sort_by_deaths'))
+                            <input type="text" name="sort_by_deaths" hidden value="{{ request('sort_by_deaths') }}">
+                        @endif
+                        @if (request('sort_by_recovered'))
+                            <input type="text" name="sort_by_recovered" hidden
+                                value="{{ request('sort_by_recovered') }}">
+                        @endif
+
 
                         <input name="search"
                             class="bg-[#FFFFFF] border-2 border-[#E6E6E7 rounded-lg h-12 w-[239px] pl-12"
@@ -65,7 +86,6 @@
                             <div>
                                 <form method="GET"
                                     action="{{ route('search-country', ['language' => app()->getLocale()]) }}">
-                                    @csrf
                                     <x-sorting-btn name="sort" />
 
                                 </form>
@@ -76,7 +96,7 @@
                             <div>
                                 <form method="GET"
                                     action="{{ route('search-country', ['language' => app()->getLocale()]) }}">
-                                    @csrf
+                                    
 
                                     <x-sorting-btn name="sort_by_cases" />
 
@@ -90,7 +110,7 @@
                             <div>
                                 <form method="GET"
                                     action="{{ route('search-country', ['language' => app()->getLocale()]) }}">
-                                    @csrf
+                                    
                                     <x-sorting-btn name="sort_by_deaths" />
 
                                 </form>
@@ -102,7 +122,7 @@
                             <div>
                                 <form method="GET"
                                     action="{{ route('search-country', ['language' => app()->getLocale()]) }}">
-                                    @csrf
+                                   
                                     <x-sorting-btn name="sort_by_recovered" />
 
                                 </form>
