@@ -1,14 +1,15 @@
 <?php
 
-
 namespace App\Models;
+
 use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable,CanResetPasswordTrait;
+    use Notifiable;
+    use CanResetPasswordTrait;
 
     /**
      * The attributes that are mass assignable.
