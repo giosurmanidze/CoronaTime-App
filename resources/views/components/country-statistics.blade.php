@@ -60,7 +60,8 @@
             <div class="md:w-[90%] xs:w-full m-auto mt-7">
                 <div class="w-full border-collapse border border-[#F6F6F7] rounded-lg">
                     <div class="w-full bg-[#F6F6F7] flex xs:justify-between md:justify-start">
-                        <div class="px-4 py-2 xs:w-[25%] xs:text-sm xs:px-2 md:w-[20%] flex items-center justify-start">
+                        <div
+                            class="md:px-4 py-2 xs:w-[25%] xs:text-sm xs:px-2 md:w-[20%] flex items-center justify-start">
                             <strong>{{ __('location') }}</strong>
                             <div>
                                 <form method="GET"
@@ -112,47 +113,9 @@
                     <div class="max-h-[60vh] overflow-y-auto">
                         <div>
                             @if (app()->getLocale() === 'en')
-                                @foreach ($data as $info)
-                                    <div class="border-t border-[#F6F6F7] flex">
-                                        <div
-                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
-                                            {{ json_decode($info->name, true)['en'] }}
-                                        </div>
-                                        <div
-                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
-                                            {{ $info->confirmed }}
-                                        </div>
-                                        <div
-                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
-                                            {{ $info->deaths }}
-                                        </div>
-                                        <div
-                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
-                                            {{ $info->recovered }}
-                                        </div>
-                                    </div>
-                                @endforeach
+                                <x-info-column :data="$data" lang="en" />
                             @else
-                                @foreach ($data as $info)
-                                    <div class="border-t border-[#F6F6F7] flex">
-                                        <div
-                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
-                                            {{ json_decode($info->name, true)['ka'] }}
-                                        </div>
-                                        <div
-                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
-                                            {{ $info->confirmed }}
-                                        </div>
-                                        <div
-                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
-                                            {{ $info->deaths }}
-                                        </div>
-                                        <div
-                                            class="px-4 py-2 xs:w-[25%] md:w-[20%] flex justify-center flex-col items-start">
-                                            {{ $info->recovered }}
-                                        </div>
-                                    </div>
-                                @endforeach
+                                <x-info-column :data="$data" lang="ka" />
                             @endif
                         </div>
                     </div>

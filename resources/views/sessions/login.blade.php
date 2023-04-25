@@ -1,7 +1,8 @@
 <x-layout>
     <x-slot name="content">
         <div class="flex flex-col md:flex-row h-screen">
-            <div class="md:w-3/5 h-screen flex justify-center md:justify-start lg:ml-10  items-center w-full">
+            <div
+                class="md:w-3/5 h-screen flex justify-center md:justify-start lg:ml-10 xs:mt-[80px] md:items-center md:mt-0 w-full">
                 <form method="POST" action="{{ route('store-login') }}"
                     class="w-full max-w-md px-4 md:ml-10 flex flex-col md:gap-2 gap-4">
                     @csrf
@@ -26,7 +27,7 @@
                             {{ __('user_name') }}
                         </label>
                         <input
-                            class="appearance-none border h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old('username')) && !$errors->has('username')) border-green-500 @endif @if ($errors->has('username')) border-red-500 @endif"
+                            class="appearance-none text-sm border h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old('username')) && !$errors->has('username')) border-green-500 @endif @if ($errors->has('username')) border-red-500 @endif"
                             id="username" type="text" name="username" placeholder="{{ __('login_username') }}"
                             value="{{ old('username') ?: request()->cookie('remember_token') ?? '' }}">
                         @if (!empty(old('login')) && !$errors->has('username'))
@@ -44,7 +45,7 @@
                             {{ __('Password') }}
                         </label>
                         <input
-                            class="appearance-none border h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old('password')) && !$errors->has('password')) border-green-500 @endif @if ($errors->has('password')) border-red-500 @endif"
+                            class="appearance-none border text-sm h-14 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @if (!empty(old('password')) && !$errors->has('password')) border-green-500 @endif @if ($errors->has('password')) border-red-500 @endif"
                             id="password" type="password" name="password" placeholder="{{ __('for_password') }}"
                             value="{{ old('password') ?: request()->cookie('remember_token_password') ?? '' }}">
 
