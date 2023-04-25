@@ -8,7 +8,6 @@ use Faker\Factory as Faker;
 
 class StatisticsFactory extends Factory
 {
-
     public function definition()
     {
         $faker = Faker::create();

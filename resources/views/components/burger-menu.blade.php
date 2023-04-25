@@ -26,7 +26,7 @@
                     @csrf
                     <button type="submit" class="sm:flex block p-4">{{ __('logout') }}</button>
                 </form>
-           
+
                 <img width="20" src="https://imghost.net/ib/GC087B92xLk0zkQ_1681897749.png"
                     alt="icons8-log-out-48.png" />
             </li>
