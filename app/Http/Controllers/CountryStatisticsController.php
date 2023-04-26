@@ -12,15 +12,15 @@ class CountryStatisticsController extends Controller
 
         $search = request('search');
         $sort = request('sort');
-        $sortByCases = request('sort_by_cases'); 
-        $sortByDeaths= request('sort_by_deaths'); 
-        $sortByReceovered= request('sort_by_recovered'); 
-    
-        $data = Statistics::filterAndSort($search,$sort, $sortByCases, $sortByDeaths, $sortByReceovered)->get(); 
-    
+        $sortByCases = request('sort_by_cases');
+        $sortByDeaths= request('sort_by_deaths');
+        $sortByReceovered= request('sort_by_recovered');
+
+        $data = Statistics::filterAndSort($search, $sort, $sortByCases, $sortByDeaths, $sortByReceovered)->get();
+
         return view('components.country-statistics', ['data' => $data]);
     }
-    
-    
- 
+
+
+
 }

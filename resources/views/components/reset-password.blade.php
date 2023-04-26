@@ -3,7 +3,7 @@
         <div class="min-h-screen flex items-center justify-center flex-col">
             <img src="images/Group 1.jpg" class="absolute top-4" />
             <div class="flex flex-col items-center justify-center gap-10 px-4 sm:px-0 sm:max-w-md w-full">
-                <h1 class="text-xl sm:text-3xl text-black"><strong>{{ __("reset") }}</strong></h1>
+                <h1 class="text-xl sm:text-3xl text-black"><strong>{{ __('reset') }}</strong></h1>
 
                 <form method="POST" action="{{ route('password.email') }}"
                     class="w-full max-w-md px-4 md:ml-10 flex flex-col md:gap-10 gap-4">
