@@ -25,8 +25,9 @@ class Statistics extends Model
         $lang = app()->getLocale();
 
         $query->when($search ?? false, function ($query) use ($search, $lang) {
-            $query->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, '$." .  $lang . "'))) LIKE ?", [strtolower($search) . '%']);
+            $query->whereRaw("LOWER(json_extract(name, '$." .  $lang . "')) LIKE ?", [strtolower($search) . '%']);
         });
+        
 
 
         if ($sort === 'ascending') {
