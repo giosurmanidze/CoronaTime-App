@@ -17,7 +17,6 @@ class RegisterController extends Controller
         $validatedData = $request->validated();
         unset($validatedData['password_confirmation']);
     
-        $validatedData['password'] = Hash::make($validatedData['password']);
         $user = User::create($validatedData);
     
         $confirmationLink = url('/confirm-account/' . $user->id);
@@ -25,6 +24,7 @@ class RegisterController extends Controller
     
         return redirect('/confirmation-status');
     }
+    
     
     public function confirmEmail(User $user): View
     {
