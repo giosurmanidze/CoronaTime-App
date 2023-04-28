@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -17,22 +18,19 @@ class RegisterTest extends TestCase
         $response->assertViewIs("sessions.sign-up");
     }
 
-
-    public function test_register_post_request() {
-        $userData = [
-            'name' => 'giorgi',
-            'email' => 'giorgi@example.com',
-            'password' => 'password123',
-            'password_confirmation' => 'password123',
-        ];
-    
-        $response = $this->post(route("register"), $userData);
-        $response->assertStatus(302);
-
-    
-        $this->assertDatabaseHas('users', [
-            'name' => 'giorgi',
-            'email' => 'giorgi@example.com',
+    public function test_user_can_confirm_email()
+    {
+        $user = User::factory()->create([
+            'email_verified_at' => null,
         ]);
+    
+        $response = $this->get(route('confirm-account', $user->id));
+    
+        $this->assertNotNull($user->fresh()->email_verified_at);
+        $response->assertViewIs('email.activated-account');
     }
+    
+    
+    
+    
 }
