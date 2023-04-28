@@ -18,4 +18,13 @@ class StatisticsByCountryTest extends TestCase
         $response->assertSuccessful();
         $response->assertViewIs("components.country-statistics");
     }
+
+    public function test_statistics_by_country_post_data()
+    {
+        $user = User::factory()->create(['email_verified_at' => now()]);
+        $response = $this->actingAs($user)->get(route('search-country'));
+
+        $response->assertSuccessful();
+        $response->assertViewIs("components.country-statistics");
+    }
 }
