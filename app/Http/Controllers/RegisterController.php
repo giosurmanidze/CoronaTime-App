@@ -16,16 +16,16 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validated();
         unset($validatedData['password_confirmation']);
-
+    
         $validatedData['password'] = Hash::make($validatedData['password']);
         $user = User::create($validatedData);
-
-        $this->sendConfirmationEmail($user);
-
+    
+        $confirmationLink = url('/confirm-account/' . $user->id);
+        Mail::to($user->email)->send(new ConfirmationEmail($user, $confirmationLink));
+    
         return redirect('/confirmation-status');
     }
-
-
+    
     public function confirmEmail(User $user): View
     {
         if (!$user->email_verified_at) {
@@ -34,12 +34,5 @@ class RegisterController extends Controller
         }
 
         return view('email.activated-account');
-    }
-
-    private function sendConfirmationEmail(User $user): void
-    {
-        $confirmationLink = url('/confirm-account/' . $user->id);
-
-        Mail::to($user->email)->send(new ConfirmationEmail($user, $confirmationLink));
     }
 }
