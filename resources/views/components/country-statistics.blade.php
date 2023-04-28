@@ -9,7 +9,7 @@
                     <div class="flex items-center sm:gap-[25px] xs:gap-3">
                         <div class="text-black flex items-center cursor-pointer">
 
-                            <form method="POST" action="{{ route('search-country') }}">
+                            <form method="POST" action="{{ route('search-by-country') }}">
                                 <select id="language-select" class="cursor-pointer"
                                     onchange="changeLanguage(this.value);">
                                     <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>
