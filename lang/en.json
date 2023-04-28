@@ -39,7 +39,7 @@
     "logout": "  Log out",
     "WorldWide_title": "Worldwide Statistics",
     "by_country": "By country",
-    "new_cases": "New cases"
-    
+    "new_cases": "New cases",
+    "is_incorrect_input": "username or password is incorrect"
 
 }

@@ -28,7 +28,7 @@ class LoginController extends Controller
         
 
         if (!$user->email_verified_at || !password_verify($password, $user->password)) {
-            return back()->withInput($request->only('username', 'remember'))->withErrors(['password' => trans("user_password_incorrect")])->withErrors(['username' => 'username or password is incorrect']);
+            return back()->withInput($request->only('username', 'remember'))->withErrors(['password' => trans("user_password_incorrect")])->withErrors(['username' => trans('is_incorrect_input')]);
         }
 
         auth()->login($user, $request->input('remember', false));
