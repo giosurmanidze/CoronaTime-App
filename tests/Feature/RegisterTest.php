@@ -10,11 +10,11 @@ class RegisterTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_register_page_is_accessible(){
-       
+    public function test_register_page_is_accessible()
+    {
+
         $response = $this->get(route('register'));
         $response->assertSuccessful();
-
         $response->assertViewIs("sessions.sign-up");
     }
 
@@ -23,14 +23,14 @@ class RegisterTest extends TestCase
         $user = User::factory()->create([
             'email_verified_at' => null,
         ]);
-    
+
         $response = $this->get(route('confirm-account', $user->id));
-    
+
         $this->assertNotNull($user->fresh()->email_verified_at);
         $response->assertViewIs('email.activated-account');
     }
-    
-    
-    
-    
+
+
+
+
 }

@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class StatisticsByCountryTest extends TestCase
 {
-   use RefreshDatabase;
+    use RefreshDatabase;
 
     public function test_statistics_by_country_is_accesible()
     {

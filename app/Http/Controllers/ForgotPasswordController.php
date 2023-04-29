@@ -23,9 +23,7 @@ class ForgotPasswordController extends Controller
         }
 
         $token = app('auth.password.broker')->createToken($user);
-
         $resetLink = url('/reset-password/' . $token . '?email=' . $validatedData["email"]);
-
         Mail::to($validatedData["email"])->send(new CustomResetEmail($resetLink));
 
         return redirect("/reset-link-status")->with('status', trans('reset_sent_message'));
