@@ -9,10 +9,6 @@ use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['redirect.if.root'])->get('/', function () {
-    return redirect('/register');
-});
-
 
 Route::middleware('guest')->group(function () {
     Route::view('register', 'sessions.sign-up')->name('sign-up');

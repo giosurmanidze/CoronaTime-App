@@ -22,7 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'remember_token', // Add this line
+        'remember_token',
     ];
 
     public function setPasswordAttribute($value)
