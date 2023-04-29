@@ -42,7 +42,7 @@
                 <div class="w-[90%] flex flex-col justify-center m-auto h-[120px] gap-5">
                     <h1 class="text-xl"><strong>{{ __('WorldWide_title') }}</strong></h1>
                     <div class="flex gap-10 relative">
-                        <div class="relative flex gap-5 items-center">
+                        <div class="relative flex gap-5 items-center {{app()->getLocale() === 'ka' ? 'xs:text-[15px]' : ''}}">
                             <a class="pb-[10px]"
                                 href="{{ route('landing-worldwide', ['language' => app()->getLocale()]) }}">{{ __('WorldWide') }}</a>
                             <a class="{{ request()->is('statistics-by-country') ? 'border-b-[3px] border-black pb-[10px] z-20' : '' }}"
@@ -83,50 +83,42 @@
                 <div class="w-full border-collapse border border-[#F6F6F7] rounded-lg">
                     <div class="w-full bg-[#F6F6F7] flex xs:justify-between md:justify-start">
                         <div
-                            class="md:px-4 py-2 xs:w-[25%] xs:text-sm xs:px-2 md:w-[20%] flex items-center justify-start">
+                            class="md:px-4 py-2 {{ app()->getLocale() === 'ka' ? ' xs:text-[10px] sm:text-[13px] xs:max-w-[20%] xs:px-1 ' : 'xs:text-[15px] px-4' }}  md:w-[20%] flex items-center justify-start">
                             <strong>{{ __('location') }}</strong>
                             <div>
                                 <form method="GET"
                                     action="{{ route('search-country', ['language' => app()->getLocale()]) }}">
                                     <x-sorting-btn name="sort" />
-
                                 </form>
                             </div>
                         </div>
-                        <div class="px-4 py-2 xs:w-[35%] xs:text-sm xs:px-2 md:w-[20%] flex items-center justify-start">
+                        <div
+                            class="px-4 py-2 {{ app()->getLocale() === 'ka' ? ' xs:text-[10px] sm:text-[13px] xs:max-w-[25%] xs:px-1' : 'xs:text-[15px]' }}  md:w-[20%] flex items-center justify-start">
                             <strong>{{ __('new_cases') }}</strong>
                             <div>
                                 <form method="GET"
                                     action="{{ route('search-country', ['language' => app()->getLocale()]) }}">
-
-
                                     <x-sorting-btn name="sort_by_cases" />
-
                                 </form>
                             </div>
                         </div>
-                        <div class="px-4 py-2 xs:w-[25%] xs:text-sm xs:px-2 md:w-[20%] flex items-center justify-start">
+                        <div
+                            class="px-3 py-2  {{ app()->getLocale() === 'ka' ? ' xs:text-[10px] sm:text-[13px] xs:max-w-[25%] xs:px-1' : 'xs:text-[15px]' }} md:w-[20%] flex items-center justify-start">
                             <strong>{{ __('Deaths') }}</strong>
-
-
                             <div>
                                 <form method="GET"
                                     action="{{ route('search-country', ['language' => app()->getLocale()]) }}">
-
                                     <x-sorting-btn name="sort_by_deaths" />
-
                                 </form>
-
                             </div>
                         </div>
-                        <div class="px-4 py-2 xs:w-[25%] xs:text-sm xs:px-2 md:w-[20%] flex items-center justify-start">
+                        <div
+                            class="px-4 py-2 {{ app()->getLocale() === 'ka' ? ' xs:text-[10px] sm:text-[13px] xs:max-w-[35%] xs:px-1' : 'xs:text-[15px]' }} md:w-[20%] flex items-center justify-start">
                             <strong>{{ __('Recovered') }}</strong>
                             <div>
                                 <form method="GET"
                                     action="{{ route('search-country', ['language' => app()->getLocale()]) }}">
-
                                     <x-sorting-btn name="sort_by_recovered" />
-
                                 </form>
                             </div>
                         </div>
