@@ -42,7 +42,8 @@
                 <div class="w-[90%] flex flex-col justify-center m-auto h-[120px] gap-5">
                     <h1 class="text-xl"><strong>{{ __('WorldWide_title') }}</strong></h1>
                     <div class="flex gap-10 relative">
-                        <div class="relative flex gap-5 items-center {{app()->getLocale() === 'ka' ? 'xs:text-[15px]' : ''}}">
+                        <div
+                            class="relative flex gap-5 items-center {{ app()->getLocale() === 'ka' ? 'xs:text-[15px]' : '' }}">
                             <a class="pb-[10px]"
                                 href="{{ route('landing-worldwide', ['language' => app()->getLocale()]) }}">{{ __('WorldWide') }}</a>
                             <a class="{{ request()->is('statistics-by-country') ? 'border-b-[3px] border-black pb-[10px] z-20' : '' }}"

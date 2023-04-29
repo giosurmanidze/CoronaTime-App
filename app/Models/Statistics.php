@@ -23,17 +23,17 @@ class Statistics extends Model
     public function scopeFilterAndSort(Builder $query, string|null $search, string|null $sort, string|null $sortByCases, string|null $sortByDeaths, string|null $sortByRecovered): Builder
     {
         $lang = app()->getLocale();
-    
+
         $query->when($search ?? false, function ($query) use ($search, $lang) {
             $query->whereRaw("LOWER(REPLACE(JSON_EXTRACT(name, '$." .  $lang . "'), '\"', '')) LIKE ?", [strtolower($search) . '%']);
         });
-    
+
         if ($sort === 'ascending') {
             $query->orderByRaw("REPLACE(JSON_EXTRACT(name, '$." .  $lang . "'), '\"', '') COLLATE utf8mb4_bin ASC");
         } elseif ($sort === 'descending') {
             $query->orderByRaw("REPLACE(JSON_EXTRACT(name, '$." .  $lang . "'), '\"', '') COLLATE utf8mb4_bin DESC");
         }
-    
+
         $query->when($sortByCases, function ($query) use ($sortByCases) {
             $query->orderBy('confirmed', $sortByCases === 'ascending' ? 'asc' : 'desc');
         })
@@ -43,8 +43,8 @@ class Statistics extends Model
             ->when($sortByRecovered, function ($query) use ($sortByRecovered) {
                 $query->orderBy('recovered', $sortByRecovered === 'ascending' ? 'asc' : 'desc');
             });
-    
+
         return $query;
     }
-    
+
 }
