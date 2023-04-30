@@ -2,7 +2,7 @@
     <x-slot name="content">
         <div class="flex flex-col md:flex-row h-screen">
             <div
-                class="md:w-3/5 h-screen flex justify-center md:justify-start lg:ml-10 xs:mt-[80px] md:items-center md:mt-0 w-full">
+                class="md:w-3/5 h-screen flex justify-center md:justify-start lg:ml-10 xs:mt-[80px] md:items-start md:pt-[110px] md:mt-0 w-full">
                 <form method="POST" action="{{ route('store-login') }}"
                     class="w-full max-w-md px-4 md:ml-10 flex flex-col md:gap-2 gap-4">
                     @csrf
