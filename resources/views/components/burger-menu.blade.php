@@ -17,8 +17,6 @@
 
             <li class="border-b border-inherit flex items-center">
                 <div class="block p-4" aria-current="true" @click="openMenu = false">{{ auth()->user()->name }}</div>
-                <img src="https://imghost.net/ib/ABRej8AKCk1Gwjq_1681898421.png" alt="icons8-user-48.png"
-                    width="20" />
             </li>
             <li class="border-b border-inherit flex items-center">
 
@@ -27,8 +25,6 @@
                     <button type="submit" class="sm:flex block p-4">{{ __('logout') }}</button>
                 </form>
 
-                <img width="20" src="https://imghost.net/ib/GC087B92xLk0zkQ_1681897749.png"
-                    alt="icons8-log-out-48.png" />
             </li>
         </ul>
         <button class="absolute top-0 right-0 bottom-0 left-0" @click="openMenu = !openMenu">

@@ -20,10 +20,10 @@ class ScopeFilterTest extends TestCase
         ->filterAndSort(null, null, 'cases', 'ascending', null)
         ->get();
 
-    $this->assertEquals([20], $result->pluck('confirmed')->toArray());
+        $this->assertEquals([20], $result->pluck('confirmed')->toArray());
     }
-    
-    
+
+
     public function test_sort_descending_by_cases()
     {
         Statistics::factory()->create([
@@ -37,7 +37,7 @@ class ScopeFilterTest extends TestCase
         $result = Statistics::query()
             ->filterAndSort(null, null, 'cases', 'descending', null)
             ->get();
-    
+
         $this->assertEquals([20, 10], $result->pluck('confirmed')->toArray());
     }
 
@@ -52,7 +52,7 @@ class ScopeFilterTest extends TestCase
         ->filterAndSort(null, null, 'deaths', 'ascending', null)
         ->get();
 
-    $this->assertEquals([20], $result->pluck('deaths')->toArray());
+        $this->assertEquals([20], $result->pluck('deaths')->toArray());
     }
 
     public function test_sort_descending_by_deaths()
@@ -64,7 +64,7 @@ class ScopeFilterTest extends TestCase
         $result = Statistics::query()
             ->filterAndSort(null, null, 'deaths', 'descending', null)
             ->get();
-    
+
         $this->assertEquals([20], $result->pluck('deaths')->toArray());
     }
 
@@ -78,7 +78,7 @@ class ScopeFilterTest extends TestCase
         $result = Statistics::query()
             ->filterAndSort($search, null, null, null, null)
             ->get();
-    
+
         $this->assertTrue($result->count() > 0);
         $this->assertTrue(
             $result->pluck('name')->contains(
@@ -97,7 +97,7 @@ class ScopeFilterTest extends TestCase
         $result = Statistics::query()
             ->filterAndSort($search, null, null, null, 'ka')
             ->get();
-    
+
         $this->assertTrue($result->count() > 0);
         $this->assertTrue(
             $result->pluck('name')->contains(
