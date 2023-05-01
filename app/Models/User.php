@@ -6,12 +6,11 @@ use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use CanResetPasswordTrait;
-    use HasFactory;
+    use Notifiable, CanResetPasswordTrait, HasFactory;
 
 
     /**
@@ -23,8 +22,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'remember_token', // Add this line
+        'remember_token',
     ];
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -35,6 +39,8 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+
 
     /**
      * The attributes that should be cast to native types.

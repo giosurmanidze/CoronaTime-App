@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 
 class AuthTest extends TestCase
 {
-    use RefreshDatabase;
+     use RefreshDatabase;
 
     public function test_login_page_is_accessible()
     {
@@ -18,8 +18,7 @@ class AuthTest extends TestCase
         $response->assertViewIs("sessions.login");
     }
 
-    public function test_login_post_request()
-    {
+    public function test_login_post_request() {
         $userData = [
             'name' => 'giorgi',
             'email' => 'giorgi@example.com',
@@ -64,26 +63,26 @@ class AuthTest extends TestCase
         $response->assertStatus(Response::HTTP_FOUND);
         $response->assertSessionHasErrors('username');
     }
-
+    
     public function test_login_with_remember_cookie()
     {
         $user = User::factory()->create([
-            'email_verified_at' => now(),
             'password' => bcrypt('password123'),
+            'email_verified_at' => now(),
         ]);
-
+    
         $response = $this->post(route('login'), [
             'username' => $user->email,
             'password' => 'password123',
             'remember' => true,
         ]);
-
+    
         $response->assertStatus(302);
         $response->assertRedirect('/landing-worldwide');
         $response->assertCookie('remember_token', $user->email);
         $response->assertCookie('remember_token_password', 'password123');
     }
-
+    
     public function test_login_with_unverified_email()
     {
         $password = 'password';
@@ -91,7 +90,7 @@ class AuthTest extends TestCase
             'password' => bcrypt($password),
             'email_verified_at' => null,
         ]);
-
+    
         $response = $this->post(route('login'), [
             'username' => $user->email,
             'password' => $password,
