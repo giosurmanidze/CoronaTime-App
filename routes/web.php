@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('guest')->group(function () {
+    Route::redirect('/', 'login');
     Route::view('register', 'sessions.sign-up')->name('sign-up');
     Route::post('register', [RegisterController::class, 'register'])->name('register');
     Route::view('login', 'sessions.login')->name("login");

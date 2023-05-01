@@ -9,7 +9,6 @@ use Tests\TestCase;
 
 class CommandTest extends TestCase
 {
-
     use  RefreshDatabase;
 
     public function it_updates_statistics_for_each_country()
