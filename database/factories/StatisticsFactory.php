@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Statistics;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as Faker;
 

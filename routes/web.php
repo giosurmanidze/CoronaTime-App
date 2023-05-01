@@ -8,6 +8,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
+
+
 Route::middleware('guest')->group(function () {
     Route::redirect('/', 'login');
     Route::view('register', 'sessions.sign-up')->name('sign-up');

@@ -18,4 +18,11 @@ class LandingPageTest extends TestCase
         $response->assertSuccessful();
         $response->assertViewIs("components.landing-worldwide");
     }
+
+//     public function test_home_redirects_to_landing_worldwide()
+// {
+//     $response = $this->get('/');
+//     $response->assertRedirect('/landing-worldwide');
+// }
+
 }
