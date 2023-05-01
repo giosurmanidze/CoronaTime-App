@@ -95,11 +95,21 @@ class AuthTest extends TestCase
             'username' => $user->email,
             'password' => $password,
         ]);
-    
         $response->assertStatus(Response::HTTP_FOUND);
         $response->assertSessionHasErrors('username');
         $this->assertGuest();
     }
-    
-   
+
+
+    public function test_invalid_login_invalid_email_format()
+    {
+        $response = $this->post('/login', [
+            'username' => 'invalid_email',
+            'password' => 'password123',
+        ]);
+        $response->assertStatus(Response::HTTP_FOUND);
+        $response->assertSessionHasErrors('username');
+        $this->assertGuest();
+    }
+
 }
